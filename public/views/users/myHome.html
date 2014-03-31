@@ -1,0 +1,56 @@
+<!-- here just a picture using Gravitar???
+
+should display all the users campaigns
+
+and below should display all the users contributions
+
+how much money he has given
+
+how much money he has made
+
+and then links to his github and other stuff like twitter
+
+
+ -->
+<div data-ng-controller="UsersController" data-ng-init="findOne()">
+  <div class="jumbotron">
+    <div class="list-group">
+      <div class="clearfix">
+        <div class="col-sm-2"><img style="width:120px; height: 110px;" src="/images/jhk.png"></div>
+        <legend class="col-sm-6" ng-trim='false'>{{global.user.displayName+","}}<br>Welcome!</legend>
+        <div class="alert alert-dismissable alert-success col-sm-4">
+          <strong>{{"Total Earned: "+user.totalEarned}}</strong><br>
+          <strong>{{"Total Contributed: "+user.totalContributed}}</strong><br>
+        </div>
+      </div>
+      <div>
+        <a href="http://github.com/{{user.username}}">Check out my Github!</a>
+      </div>
+      <div class="jumbotron clearfix">
+        <div class="col-sm-3" style="margin-top: 20px" data-ng-repeat="campaign in user.campaigns"><!-- data-ng-repeat here and pass in the relevant values -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title"><a href="/#!/campaign/{{campaign._id}}">Campaign: {{campaign.title}}</a></h4>
+              <h4 class="modal-title">Status: {{campaign.status}}</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                  <li data-ng-repeat="merchant in campaign.merchants">{{merchant.displayName}}</li>
+              </p>
+              <p data-ng-show="campaign.marketplaces.length > 0">
+                  <li data-ng-repeat="marketplace in campaign.marketplaces">{{marketplace.displayName}}</li>
+              </p>
+              <p><h6>Current: {{"$"+campaign.escrowFund}}</h6></p>
+              <p><h6>Threshold: {{"$"+campaign.tiltThreshold}}</h6></p>
+              <p><h6>Created: {{campaign.created | date: medium}}</h6></p>
+            </div>
+            <div class="modal-footer" data-ng-controller="CampaignsController">
+              <button type="button" class="btn btn-primary" data-ng-click="campaignForm(issue)">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

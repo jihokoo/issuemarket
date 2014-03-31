@@ -1,0 +1,46 @@
+<div data-ng-controller="CampaignsController">
+  <legend>Create Bounty</legend>
+  <form class="form-horizontal col-md-offset-2 col-lg-12" data-ng-submit="createCampaign()">
+    <fieldset>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Name Your Price</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" id="inputEmail" data-ng-model="tiltThreshold" placeholder="Name Your Price in USD">
+        </div>
+      </div>
+<!--       <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Time Needed</label>
+        <div class="col-lg-3">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Maximum Days Needed">
+          <span class="help-block">Input the maximum number of days you will need to finish this project.</span>
+        </div>
+      </div> -->
+      <div class="form-group">
+        <label for="textArea" class="col-lg-2 control-label">Title</label>
+        <div class="col-lg-3">
+          <input class="form-control" rows="3" id="input" data-ng-model="title" required></input>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="textArea" class="col-lg-2 control-label">Description</label>
+        <div class="col-lg-3">
+          <textarea class="form-control" rows="3" id="textArea" data-ng-model="description" required></textarea>
+          <span class="help-block">Give a short description of what you plan on doing.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="textArea" class="col-lg-2 control-label">Message</label>
+        <div class="col-lg-3">
+          <textarea class="form-control" rows="3" id="textArea" data-ng-model="message" required></textarea>
+          <span class="help-block">A notification message will be sent through email to Github users involved in the issue.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-3 col-lg-offset-2">
+          <button class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

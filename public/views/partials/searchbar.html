@@ -1,0 +1,48 @@
+<div data-ng-controller="SearchbarController">
+  <form role="form" name="searchForm" class="form-horizontal" data-ng-submit="search()">
+    <fieldset>
+      <legend>Search for Issues</legend>
+      <div class="form-group">
+        <label class="col-lg-1 control-label">Search For</label>
+        <div class="col-lg-2">
+          <div class="radio">
+            <label>
+              <input type="radio" data-ng-model="searchFor" value="issues" checked="">
+              Pressing Issues
+            </label>
+          </div>
+          <!-- add in more ways to search -->
+        </div>
+        <label class="col-lg-1 control-label">Sort By</label>
+        <div class="col-lg-2">
+          <div class="radio">
+            <label>
+              <input type="radio" data-ng-model="sortBy" value="comments" checked="">
+              # of Comments
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" data-ng-model="sortBy" value="created">
+              Date Created
+            </label>
+          </div>
+        </div>
+        <label for="select" class="col-lg-1 control-label">Language</label>
+        <div class="col-lg-3">
+          <select class="form-control" data-ng-model="language">
+            <option value="javascript">Javascript</option>
+            <option value="ruby">Ruby</option>
+            <option value="perl">Perl</option>
+            <option value="java">Java</option>
+            <option value="c++">C++</option>
+            <!-- Can't tell if this should be hard coded or generated from the database everytime. -->
+          </select>
+        </div>
+        <div class="col-lg-1">
+          <button type="submit" class="btn btn-primary pull-left">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

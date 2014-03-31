@@ -1,0 +1,8 @@
+<div class="jumbotron clearfix" style="background-color: lightSlateGray" data-ng-show="marketplaces">
+  <div class="list-group col-sm-2" data-ng-repeat="customer in campaign.marketplaces" >
+    <h4 class="list-group-item-heading">{{customer.displayName}}</h4><br>
+    <span>{{"Github: "+customer.githubURL}}</span><br>
+    <span>{{"Contribution: "+customer.amount}}</span>
+    <!-- need to figure out how to get customer contribution -->
+  </div>
+</div>

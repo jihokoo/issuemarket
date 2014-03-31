@@ -1,0 +1,88 @@
+<div data-ng-controller="SearchbarController" data-ng-init="findTemporaryIssues()">
+    <div>
+      <form role="form" name="searchForm" class="form-horizontal" data-ng-submit="search()">
+        <fieldset>
+          <legend>Search for Issues</legend>
+          <div class="form-group">
+            <label class="col-lg-1 control-label">Search For</label>
+            <div class="col-lg-2">
+              <div class="radio">
+                <label>
+                  <input type="radio" data-ng-model="searchFor" value="issues" checked="">
+                  Pressing Issues
+                </label>
+              </div>
+              <!-- add in more ways to search -->
+            </div>
+            <label class="col-lg-1 control-label">Sort By</label>
+            <div class="col-lg-2">
+              <div class="radio">
+                <label>
+                  <input type="radio" data-ng-model="sortBy" value="comments" checked="">
+                  # of Comments
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" data-ng-model="sortBy" value="created">
+                  Date Created
+                </label>
+              </div>
+            </div>
+            <label for="select" class="col-lg-1 control-label">Language</label>
+            <div class="col-lg-3">
+              <select class="form-control" data-ng-model="language">
+                <option value="javascript">Javascript</option>
+                <option value="ruby">Ruby</option>
+                <option value="perl">Perl</option>
+                <option value="java">Java</option>
+                <option value="c++">C++</option>
+                <!-- Can't tell if this should be hard coded or generated from the database everytime. -->
+              </select>
+            </div>
+            <div class="col-lg-1">
+              <button type="submit" class="btn btn-primary pull-left">Submit</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <section>
+    	<div class="jumbotron clearfix">
+        <div class="col-sm-3" style="margin-top: 20px" data-ng-repeat="issue in temporary_issues"><!-- data-ng-repeat here and pass in the relevant values -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title"><a href="{{issue.html_url}}">{{issue.title}}</a></h4>
+            </div>
+            <div class="modal-body">
+              <p><h6>{{issue.body.slice(0, 150)}}</h6></p>
+            </div>
+            <div class="modal-footer" data-ng-controller="CampaignsController">
+              <button type="button" class="btn btn-primary" data-ng-click="campaignForm(issue)">Create Campaign</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3" style="margin-top: 20px" data-ng-repeat="issue in issues"><!-- data-ng-repeat here and pass in the relevant values -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title"><a href="{{issue.html_url}}">{{issue.title}}</a></h4>
+            </div>
+            <div class="modal-body">
+              <p><h6>{{issue.body.slice(0, 150)}}</h6></p>
+            </div>
+            <div class="modal-footer" data-ng-controller="CampaignsController">
+              <button type="button" class="btn btn-primary" data-ng-click="campaignForm(issue)">Create Campaign</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- implement angular mosaic -->
+    <!-- have a vote function? to vote on issues that might seem important -->
+    <!-- user posted issues -->
+    <!-- business posted issues -->
+    <!-- personal bugs -->
+    <!-- private repositories can make private initations to certain developers -->
+</div>

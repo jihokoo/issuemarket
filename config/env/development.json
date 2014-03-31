@@ -1,0 +1,6 @@
+{
+    "db": "mongodb://localhost/issuemarket",
+    "app": {
+        "name": "issuemarket - bounty marketplace for issues - Development"
+    }
+}

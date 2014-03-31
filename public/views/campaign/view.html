@@ -1,0 +1,56 @@
+<div data-ng-controller="CampaignsController" data-ng-init="findOne()">
+  <div class="jumbotron">
+    <div class="list-group">
+
+      <div class="clearfix">
+        <legend class="col-sm-8">{{campaign.title}}</legend>
+        <div class="alert alert-dismissable alert-danger col-sm-4">
+          <strong>{{"This Campaign is At: "+campaign.escrowFund}}</strong><br>
+          <strong>{{"Tilt Threshold: "+campaign.tiltThreshold}}</strong><br>
+          <a style="text-align: center" data-ng-click="paymentForm()" class="alert-link">{{campaign.tiltThreshold - campaign.escrowFund+" Left To Go!!!"}}</a>
+        </div>
+      </div>
+      <blockquote>
+          <p>{{campaign.description}}</p>
+          <small><a href="{{campaign.issue.user.html_url}}">{{campaign.issue.user.login  }}</a><cite title="Source Title"><a href="{{campaign.issue.html_url}}">   Link to Issue</a></cite></small>
+        </blockquote>
+
+        <!-- i might need to fix some of this shit -->
+
+      <a class="list-group-item" data-ng-click = "showMerchants()"  ui-sref="campaign.details">
+        <h4 class="list-group-item-heading">Developers</h4>
+      </a>
+      <div ui-view="merchants"></div>
+      <!-- in here i want to iterate through the devlopers array -->
+
+      <a class="list-group-item" data-ng-click = "showMarketplaces()"   ui-sref="campaign.details">
+        <h4 class="list-group-item-heading">Contributors</h4>
+      </a>
+      <div ui-view="marketplaces"></div>
+
+      <a class="list-group-item" data-ng-click = "showContributions()"   ui-sref="campaign.details">
+        <h4 class="list-group-item-heading">Contributions To Date</h4>
+      </a>
+      <div ui-view="contributions"></div>
+
+      <form  data-ng-show="(campaign.merchants.indexOf(global.user._id) === -1) && (global.authenticated && !!global.user.balancedToken)" data-ng-submit="addPayment()">
+        <button data-ng-click="paymentForm()" data-ng-show="preClick">Add Payment</button>
+        <!-- when i click on that link, a form should appear -->
+        <div data-ng-hide="preClick">
+          <label>Amount</label>
+          <input data-ng-model="amount" placeholder="how much do you want to contribute to this campaign?">
+          <label>What Is this Payment For?</label>
+          <input data-ng-model="statement" placeholder="what is this payment for bitch?">
+          <button type="submit" class="btn btn-large btn-primary pull-right">Contribute!</button>
+        </div>
+      </form>
+      <button style="margin-top: 20px;" class="btn btn-info" data-ng-hide="!!global.user.balancedToken || !global.authenticated" data-ng-click="paymentForm()">Create a Card to Contribute to this Campaign!</button>
+      <button data-ng-hide="global.authenticated"><a href="/signin">You must signin or create an account by singing in with Github!</a></button>
+      <!-- this should all work -->
+
+      <!-- lets add real time chat on the bottom!!!
+      so use SOCKJS to relay real time messages on the bottom -->
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="jumbotron clearfix" style="background-color: lightSlateGray"  data-ng-show="merchants">
+  <div class="list-group col-sm-2" data-ng-repeat="merchant in campaign.merchants" >
+    <h4 class="list-group-item-heading">{{merchant.displayName}}</h4><br>
+    <span>Github: <a href="{{merchant.githubUrl}}">@{{merchant.github.login}}</a></span><br>
+    <span>{{"Involved in "+merchant.campaigns.length+" campaigns"}}</span><br>
+    <span>{{"Reputation: "+merchant.reputation}}</span><br>
+    <span>{{"This developer has earned $"+merchant.totalEarnings+" to date."}}</span>
+  </div>
+</div>
