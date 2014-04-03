@@ -1,9 +1,9 @@
-<div class="jumbotron clearfix" style="background-color: lightSlateGray" data-ng-show="contributions">
-  <div class="list-group col-sm-2" data-ng-repeat="payment in campaign.payments" >
+<div class="jumbotron clearfix" style="background-color: #c8d7f1; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px" data-ng-show="contributions">
+  <div class="list-group col-sm-2" data-ng-repeat="payment in campaign.payments" style="margin-top: 5px; margin-bottom: 5px;">
     <a href="#" class="list-group-item">
       <h4 class="list-group-item-heading">{{payment.giver.displayName}}</h4>
-      <p class="list-group-item-text"><h6>Amount: {{payment.amount}}</h6></p>
-      <p class="list-group-item-text"><h6>Created: {{payment.created | date: medium}}</h6></p>
+      <p class="list-group-item-text"><h6>Amount: {{payment.amount | currency:'$'}}</h6></p>
+      <p class="list-group-item-text"><h6>{{payment.created | date: medium}}</h6></p>
     </a>
   </div>
   <!-- this place should hold a diagram or maybe a meter showing how much of the way

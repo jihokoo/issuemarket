@@ -10,7 +10,7 @@ window.app.config(['$stateProvider','$urlRouterProvider',
         })
         .state('runningCampaigns', {
             url:'/runningCampaigns',
-            templateUrl: 'views/runningCampaigns.html'
+            templateUrl: 'views/users/runningCampaigns.html'
         })
         .state('homePage', {
             url:'/homepage/:userId',

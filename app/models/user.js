@@ -20,7 +20,9 @@ var UserSchema = new Schema({
   paymentsMade: [{type: Schema.ObjectId,
                 ref: 'Payment'}],
   paymentsReceived: [{type: Schema.ObjectId,
-                    ref: 'Payment'}]
+                    ref: 'Payment'}],
+  totalpm: Number,
+  totalpr: Number
 });
 
 mongoose.model('User', UserSchema);

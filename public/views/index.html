@@ -2,78 +2,84 @@
     <div>
       <form role="form" name="searchForm" class="form-horizontal" data-ng-submit="search()">
         <fieldset>
-          <legend>Search for Issues</legend>
+          <legend class="default-font">Search for Issues</legend>
           <div class="form-group">
-            <label class="col-lg-1 control-label">Search For</label>
+            <label class="col-lg-1 control-label search-labels" style="margin-left: 43px">Search For:</label>
             <div class="col-lg-2">
               <div class="radio">
                 <label>
-                  <input type="radio" data-ng-model="searchFor" value="issues" checked="">
+                  <input type="radio" class="radio-custom" data-ng-model="searchFor" value="issues" checked="">
                   Pressing Issues
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" class="radio-custom" data-ng-model="searchFor" value="popularity">
+                  Popularity
                 </label>
               </div>
               <!-- add in more ways to search -->
             </div>
-            <label class="col-lg-1 control-label">Sort By</label>
+            <label class="col-lg-1 control-label search-labels">Sort By:</label>
             <div class="col-lg-2">
               <div class="radio">
                 <label>
-                  <input type="radio" data-ng-model="sortBy" value="comments" checked="">
+                  <input type="radio" class="radio-custom" data-ng-model="sortBy" value="comments" checked="">
                   # of Comments
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" data-ng-model="sortBy" value="created">
+                  <input type="radio" class="radio-custom" data-ng-model="sortBy" value="created">
                   Date Created
                 </label>
               </div>
             </div>
-            <label for="select" class="col-lg-1 control-label">Language</label>
-            <div class="col-lg-3">
-              <select class="form-control" data-ng-model="language">
-                <option value="javascript">Javascript</option>
-                <option value="ruby">Ruby</option>
-                <option value="perl">Perl</option>
-                <option value="java">Java</option>
-                <option value="c++">C++</option>
+            <label for="select" class="col-lg-1 control-label search-labels">Language:</label>
+            <div class="col-lg-2" style="margin-right: 20px; padding-right: 0px">
+              <input id="search-input" data-ng-model="selectedLanguage" typeahead="language for language in languages | filter:$viewValue" style="height: 30px;" typeahead-on-select="onSelect($item, $model, $label)">
+<!--               <select class="form-control" data-ng-model="language">
+                <option class="default-font" value="javascript">Javascript</option>
+                <option class="default-font" value="ruby">Ruby</option>
+                <option class="default-font" value="perl">Perl</option>
+                <option class="default-font" value="java">Java</option>
+                <option class="default-font" value="c++">C++</option> -->
                 <!-- Can't tell if this should be hard coded or generated from the database everytime. -->
-              </select>
             </div>
-            <div class="col-lg-1">
-              <button type="submit" class="btn btn-primary pull-left">Submit</button>
+            <div class="col-lg-1" style="margin-left: 0px; padding-left: 0px">
+              <button type="submit" class="btn btn-primary pull-left default-font" id="search-button">Submit</button>
             </div>
           </div>
         </fieldset>
       </form>
     </div>
     <section>
-    	<div class="jumbotron clearfix">
-        <div class="col-sm-3" style="margin-top: 20px" data-ng-repeat="issue in temporary_issues"><!-- data-ng-repeat here and pass in the relevant values -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title"><a href="{{issue.html_url}}">{{issue.title}}</a></h4>
+      <div masonry class="masonry" data-masonry-options='{"isFitWidth": true}'>
+        <div class="masonry-brick loaded" data-ng-repeat="issue in temporary_issues">
+          <div class="modal-content clearfix">
+            <div class="modal-header cleafix" style="margin-top: 0px; padding-top: 5px; margin-bottom: 0px; padding-bottom: 5px">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
+              <h4 class="modal-title"><a href="{{issue.html_url}}" class="default-font issue-title">{{issue.title}}</a></h4>
             </div>
-            <div class="modal-body">
-              <p><h6>{{issue.body.slice(0, 150)}}</h6></p>
+            <div class="modal-body clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden">
+              <p><h6 class="default-font clearfix" style="position: relative; overflow: hidden">{{issue.body.slice(0, 150)}}</h6></p>
             </div>
-            <div class="modal-footer" data-ng-controller="CampaignsController">
-              <button type="button" class="btn btn-primary" data-ng-click="campaignForm(issue)">Create Campaign</button>
+            <div class="modal-footer" data-ng-controller="CampaignsController" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; margin-right: 0px; margin-left: 0px; padding-right: 0px; padding-left: 0px">
+              <button type="button" class="btn btn-primary default-font campaign-buttons" data-ng-click="campaignForm(issue)">Create Campaign</button>
             </div>
           </div>
         </div>
-        <div class="col-sm-3" style="margin-top: 20px" data-ng-repeat="issue in issues"><!-- data-ng-repeat here and pass in the relevant values -->
+        <div style="margin-top: 20px" class="masonry-brick loaded" data-ng-repeat="issue in issues">
           <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title"><a href="{{issue.html_url}}">{{issue.title}}</a></h4>
+            <div class="modal-header" style="margin-top: 0px; padding-top: 5px; margin-bottom: 0px; padding-bottom: 5px">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
+              <h4 class="modal-title"><a href="{{issue.html_url}}" class="default-font issue-title">{{issue.title}}</a></h4>
             </div>
-            <div class="modal-body">
-              <p><h6>{{issue.body.slice(0, 150)}}</h6></p>
+            <div class="modal-body clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px">
+              <p><h6 class="default-font clearfix" style="position: relative; overflow: hidden">{{issue.body.slice(0, 150)}}</h6></p>
             </div>
-            <div class="modal-footer" data-ng-controller="CampaignsController">
-              <button type="button" class="btn btn-primary" data-ng-click="campaignForm(issue)">Create Campaign</button>
+            <div class="modal-footer" data-ng-controller="CampaignsController" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; margin-right: 0px; margin-left: 0px; padding-right: 0px; padding-left: 0px">
+              <button type="button" class="btn btn-primary default-font campaign-buttons" data-ng-click="campaignForm(issue)">Create Campaign</button>
             </div>
           </div>
         </div>
@@ -86,3 +92,13 @@
     <!-- personal bugs -->
     <!-- private repositories can make private initations to certain developers -->
 </div>
+
+<!-- get rid of rounded corners, make it sharp, get rid of border radius
+
+my search filters looks like crap
+
+i'm only using two colors
+use different colors for buttons
+
+
+ -->

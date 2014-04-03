@@ -1,0 +1,27 @@
+<section data-ng-controller="CampaignsController" data-ng-init="findAll()">
+  <section masonry class="masonry" data-masonry-options='{"isFitWidth": true}'>
+    <div class="masonry-brick loaded" style="margin-top: 20px" data-ng-repeat="campaign in campaigns"><!-- data-ng-repeat here and pass in the relevant values -->
+      <div class="modal-content clearfix">
+        <div class="modal-header clearfix" style="margin-top: 0px; padding-top: 5px; margin-bottom: 0px; padding-bottom: 5px; margin-left: 0px; padding-left: 5px">
+          <h4 class="modal-title issue-title">{{campaign.title}}</h4>
+          <h4 class="modal-title campaign-status">Status: {{campaign.status}}</h4>
+        </div>
+        <div class="modal-body clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden; margin-left: 0px; padding-left: 5px">
+          <legend class="campaign-legend" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px">Developer(s):</legend>
+          <p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px">
+              <li data-ng-repeat="merchant in campaign.merchants" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; list-style: none">{{merchant.displayName}}</li>
+          </p>
+          <p data-ng-show="campaign.marketplaces.length > 0" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px">
+              <li data-ng-repeat="marketplace in campaign.marketplaces" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; list-style: none">{{marketplace.displayName}}</li>
+          </p>
+          <p><h6 class="campaign-info clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden">Current: {{campaign.escrowFund | currency:'$'}}</h6></p>
+          <p><h6 class="campaign-info clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden">Threshold: {{campaign.tiltThreshold | currency: '$'}}</h6></p>
+          <p><h6 class="campaign-info clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden">{{campaign.created | date: medium}}</h6></p>
+        </div>
+        <div class="modal-footer" data-ng-controller="CampaignsController" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; margin-right: 0px; margin-left: 0px; padding-right: 0px; padding-left: 0px">
+          <button type="button" class="btn btn-primary user-button campaign-buttons"  data-ng-click="toCampaignPage(campaign)" style="text-align: center;">Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

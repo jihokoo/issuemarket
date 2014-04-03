@@ -6,6 +6,9 @@ angular.module('issuemarket.controllers.searchbar', []).controller('SearchbarCon
   function($scope, $location, Global, Searchbar){
     $scope.global = Global;
     var socks = new SockJS('/echo');
+
+    $scope.languages = ['Javascript', 'Ruby', 'Perl', 'Java', 'C++'];
+
     $scope.search = function(){
       var searchForm = new Searchbar({
         language: $scope.language,
@@ -24,6 +27,15 @@ angular.module('issuemarket.controllers.searchbar', []).controller('SearchbarCon
         $scope.temporary_issues = response;
       })
     }
+    $scope.onSelect = function ($item, $model, $label) {
+      $scope.$item = $item;
+      $scope.$model = $model;
+      $scope.$label = $label;
+      console.log($item)
+      console.log($model)
+      console.log($label)
+    };
+
 
     socks.onmessage = function(e) {
         console.log(e);

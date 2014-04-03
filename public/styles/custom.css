@@ -1,0 +1,253 @@
+.masonry {
+  margin: 0 auto;
+}
+
+.masonry-brick {
+  margin: 1em;
+  display: block;
+  float: left;
+  width: 250px;
+  height: auto;
+  border-color: #000;
+  background-color: #cef3ee;
+}
+
+body {
+  font-family: "Source Code Pro", cursive;
+  font-size: 12px;
+}
+
+.navbar .navbar-header a.default-font,
+.navbar .navbar-collapse ul.navbar-nav a.default-font,
+.default-font {
+  font-family: "Source Code Pro", cursive;
+  text-decoration: none;
+  color: #000;
+  border-style: none;
+  border-radius: 0px;
+  font-size: 13px;
+}
+
+.title-font{
+  font-family: "Source Code Pro", cursive;
+  text-decoration: none;
+  color: #000;
+  border-style: none;
+  border-radius: 0px;
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar .navbar-collapse ul.navbar-nav a.default-font:hover {
+  border: 1px solid #c0c0c0;
+}
+
+
+
+.nav li a.default-font,
+.nav li.dropdown a.dropdown-toggle.default-font,
+.nav ul.dropdown-menu li a.default-font {
+  font-family: "Source Code Pro", cursive;
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+}
+
+.nav ul.dropdown-menu,
+.nav ul.dropdown-menu li,
+.nav ul.dropdown-menu li a.default-font{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+
+
+.nav ul.dropdown-menu li a.default-font:hover{
+  color: #000;
+  background-color: #fff;
+  border-style: solid;
+}
+
+.navbar .navbar-header a.default-font:hover, h4 .default-font:hover {
+  color: #61ae24;
+  text-decoration: none;
+}
+
+legend.default-font {
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+.modal-content {
+  box-shadow: none;
+  border-radius: 0px;
+}
+
+button.btn.btn-primary {
+  border-radius: 0px;
+}
+
+
+#search-input {
+  border: 1px solid #cccccc;
+}
+
+#search-input:hover {
+  border-color: #61ae24;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #61ae24;
+}
+
+#search-button {
+  background-color: #61ae24;
+  border-color: #cccccc;
+  color: #fff;
+  width: 150px;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-left: 0px;
+
+}
+
+
+.campaign-buttons {
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  color: #000;
+  background-color: #d2d4d4;
+}
+
+.campaign-buttons:hover {
+  color: #61ae24;
+  background-color: #c6cfd2;
+}
+
+.issue-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  padding-right: 0px;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Source Code Pro", cursive;
+}
+
+.search-labels {
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+div.modal-content div.modal-header h4.modal-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.user-page{
+  color: #617aff;
+  font-family: "Source Code Pro", cursive;
+}
+
+.campaign-info{
+ font-family: "Source Code Pro", cursive;
+ font-size: 13px;
+ margin-left: 0px;
+ padding-left: 0px;
+}
+
+.campaign-status{
+  font-family: "Source Code Pro", cursive;
+  font-size: 15px;
+}
+
+.campaign-legend{
+  font-family: "Source Code Pro", cursive;
+  font-size: 15px;
+}
+
+.user-page:hover{
+  text-decoration: none;
+  font-family: "Source Code Pro", cursive;
+}
+
+.user-button{
+  padding-top: 18px;
+  background-color: #617aff;
+  color: #fff;
+  font-family: "Source Code Pro", cursive;
+  font-size: 15px;
+}
+
+.payment-button{
+  margin-top: 10px;
+  background-color: #61ae24;
+  color: #fff;
+  font-family: "Source Code Pro", cursive;
+  font-size: 15px;
+  border-style: none;
+}
+
+.user-button:hover{
+  background-color: #9ab3ff;
+  color: #fff;
+  border-style: none;
+}
+
+.modal-title a {
+  font-family: "Source Code Pro", cursive;
+  font-size: 15px;
+  font-style: bold;
+}
+
+#user-stats {
+  border-radius: 0px;
+  background-color: #61ae24;
+  font-family: "Source Code Pro", cursive;
+  font-size: 15px;
+}
+
+#campaign-dashboard {
+  background-color: #e3413e;
+  border-radius: 0px;
+}
+
+#campaign-dashboard .strong{
+  font-size: 15px;
+}
+
+.payment-link{
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.payment-link:hover{
+  background-color: #ff897e;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+div.jumbotron {
+  border-radius: 0px;
+}
+
+.contribute-input:hover {
+  border-color: #61ae24;
+}
+
+.contribute-input:focus {
+  outline: none;
+  border-color: #61ae24;
+}
+

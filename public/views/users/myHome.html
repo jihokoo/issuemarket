@@ -16,37 +16,38 @@ and then links to his github and other stuff like twitter
   <div class="jumbotron">
     <div class="list-group">
       <div class="clearfix">
-        <div class="col-sm-2"><img style="width:120px; height: 110px;" src="/images/jhk.png"></div>
-        <legend class="col-sm-6" ng-trim='false'>{{global.user.displayName+","}}<br>Welcome!</legend>
-        <div class="alert alert-dismissable alert-success col-sm-4">
-          <strong>{{"Total Earned: "+user.totalEarned}}</strong><br>
-          <strong>{{"Total Contributed: "+user.totalContributed}}</strong><br>
+        <div class="col-sm-2"><img style="width:120px; height: 110px;" src="{{user.github.avatar_url}}"></div>
+        <legend class="col-sm-6 issue-title" ng-trim='false'>{{global.user.displayName+","}}<br>!!Welcome</legend>
+        <div class="alert alert-dismissable alert-success col-sm-4" id="user-stats" style="border: 1px solid #617aff">
+          <strong>{{"Total Earned: "+user.totalpm}}</strong><br>
+          <strong>{{"Total Contributed: "+user.totalpr}}</strong><br>
         </div>
       </div>
       <div>
-        <a href="http://github.com/{{user.username}}">Check out my Github!</a>
+        <a href="http://github.com/{{user.username}}" class='user-page'>Check out my Github!</a>
       </div>
       <div class="jumbotron clearfix">
+
         <div class="col-sm-3" style="margin-top: 20px" data-ng-repeat="campaign in user.campaigns"><!-- data-ng-repeat here and pass in the relevant values -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title"><a href="/#!/campaign/{{campaign._id}}">Campaign: {{campaign.title}}</a></h4>
-              <h4 class="modal-title">Status: {{campaign.status}}</h4>
+          <div class="modal-content clearfix">
+            <div class="modal-header clearfix" style="margin-top: 0px; padding-top: 5px; margin-bottom: 0px; padding-bottom: 5px; margin-left: 0px; padding-left: 5px">
+              <h4 class="modal-title issue-title">{{campaign.title}}</h4>
+              <h4 class="modal-title campaign-status">Status: {{campaign.status}}</h4>
             </div>
-            <div class="modal-body">
-              <p>
-                  <li data-ng-repeat="merchant in campaign.merchants">{{merchant.displayName}}</li>
+            <div class="modal-body clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden; margin-left: 0px; padding-left: 5px">
+              <legend class="campaign-legend" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px">Developer(s):</legend>
+              <p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px">
+                  <li data-ng-repeat="merchant in campaign.merchants" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; list-style: none">{{merchant.displayName}}</li>
               </p>
-              <p data-ng-show="campaign.marketplaces.length > 0">
-                  <li data-ng-repeat="marketplace in campaign.marketplaces">{{marketplace.displayName}}</li>
+              <p data-ng-show="campaign.marketplaces.length > 0" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px">
+                  <li data-ng-repeat="marketplace in campaign.marketplaces" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; list-style: none">{{marketplace.displayName}}</li>
               </p>
-              <p><h6>Current: {{"$"+campaign.escrowFund}}</h6></p>
-              <p><h6>Threshold: {{"$"+campaign.tiltThreshold}}</h6></p>
-              <p><h6>Created: {{campaign.created | date: medium}}</h6></p>
+              <p><h6 class="campaign-info clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden">Current: {{campaign.escrowFund | currency:'$'}}</h6></p>
+              <p><h6 class="campaign-info clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden">Threshold: {{campaign.tiltThreshold | currency: '$'}}</h6></p>
+              <p><h6 class="campaign-info clearfix" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; position: relative; overflow: hidden">{{campaign.created | date: medium}}</h6></p>
             </div>
-            <div class="modal-footer" data-ng-controller="CampaignsController">
-              <button type="button" class="btn btn-primary" data-ng-click="campaignForm(issue)">Details</button>
+            <div class="modal-footer" data-ng-controller="CampaignsController" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; margin-right: 0px; margin-left: 0px; padding-right: 0px; padding-left: 0px">
+              <button type="button" class="btn btn-primary user-button campaign-buttons"  data-ng-click="toCampaignPage(campaign)" style="text-align: center;">Details</button>
             </div>
           </div>
         </div>

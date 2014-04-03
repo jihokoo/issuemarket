@@ -24,7 +24,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GitHubStrategy({
     clientID: '4134b73c4eee94f0360b',
     clientSecret: '11976238d07928ab0677af4522b185cb89b14b3c',
-    callbackURL: "http://192.168.1.46:3000/auth/github/callback"
+    callbackURL: "http://192.168.1.178:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOne({ githubId: profile.id }, function (err, user) {
@@ -64,6 +64,7 @@ module.exports = function(app) {
   app.get('/signup', users.signup);
   app.get('/signout', users.signout);
 
+  app.get('/campaign', campaign.showAll)
   app.get('/campaign/:campaignId', campaign.showOne)
   app.post('/searchbar', campaign.query);
 

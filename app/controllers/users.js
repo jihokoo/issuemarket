@@ -4,6 +4,7 @@ var User = mongoose.model('User');
 var Campaign = mongoose.model('Campaign');
 var Payment = mongoose.model('Payment');
 var balanced = require('balanced-official');
+var Q = require('q');
 // change this all to bluebird
 
 balanced.configure('ak-test-1P4LCuAfcv3isFlyX9mxNXvz6bI1XNril');
@@ -76,15 +77,50 @@ exports.showAll = function(req, res){
   })
 }
 
+var addPayments = function(paymentArray){
+  var deferred = Q.defer();
+  var i = 0
+  var total = 0;
+  if(paymentArray.length < 1){
+    deferred.resolve(0);
+  }
+  paymentArray.forEach(function(payment){
+    total += payment.amount;
+    i++
+    if(paymentArray.length === i){
+      deferred.resolve(total);
+    }
+  })
+  return deferred.promise;
+}
 
 
 exports.showOne = function(req, res){
   console.log(req.params.userId);
   User.findOne({_id: req.params.userId}).populate('payments').populate('campaigns').exec(function(err, user){
-    Campaign.find({merchants: user._id}).populate('merchants').populate('marketplace').exec(function(err, campaigns){
-      user.campaigns = campaigns;
-      res.json(user);
+    console.log("hello there")
+    console.log(user.paymentsMade);
+    addPayments(user.paymentsMade)
+    .then(function(total){
+      user.totalpm = total;
+      var deferred = Q.defer();
+      console.log(user.paymentsReceived);
+      addPayments(user.paymentsReceived).then(function(data){
+        deferred.resolve(data);
+      })
+      return deferred.promise;
     })
+    .then(function(total){
+      user.totalpr = total;
+      user.save()
+      console.log("hello there")
+      Campaign.find({merchants: user._id}).populate('merchants').populate('marketplace').exec(function(err, campaigns){
+        console.log(campaigns);
+        user.campaigns = campaigns;
+        res.json(user);
+      })
+    })
+
   });
 };
 

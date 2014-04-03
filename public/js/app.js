@@ -3,6 +3,7 @@ window.app = angular.module('issuemarket',
   'ngResource',
   'ui.bootstrap',
   'ui.route',
+  'wu.masonry',
   'ui.router',
   'issuemarket.controllers',
   'issuemarket.services'

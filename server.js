@@ -60,19 +60,29 @@ var connections = [];
 
 
 
-sockjs_echo.on('connection', function(conn) {
-    connections.push(conn);
+// sockjs_echo.on('connection', function(conn) {
+//     connections.push(conn);
 
+//     conn.on('data', function(message) {
+//         for (var ii=0; ii < connections.length; ii++) {
+//             console.log("hello")
+//             connections[ii].write(message);
+//         }
+//     });
+//     conn.on('close', function() {
+//         for (var ii=0; ii < connections.length; ii++) {
+//             connections[ii].write("User has disconnected");
+//         }
+//     });
+// });
+
+
+sockjs_echo.on('connection', function(conn) {
     conn.on('data', function(message) {
-        for (var ii=0; ii < connections.length; ii++) {
-            console.log("hello")
-            connections[ii].write(message);
-        }
+        conn.write(message);
     });
     conn.on('close', function() {
-        for (var ii=0; ii < connections.length; ii++) {
-            connections[ii].write("User has disconnected");
-        }
+        conn.write("User has disconnected");
     });
 });
 

@@ -15,7 +15,8 @@ var PaymentSchema = new Schema({
             // in the campaign instances, there may not be a point
   amount: Number,
   balancedId: String,
-  created: String,
+  created: {type: Date,
+            default: Date.now},
   status: String,
   type: String,
 });

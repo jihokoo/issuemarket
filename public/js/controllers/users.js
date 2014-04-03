@@ -14,8 +14,9 @@ angular.module('issuemarket.controllers.users', []).controller('UsersController'
       });
       console.log(card);
       user.balancedToken = card.cards[0].id;
-      user.$update(function(payment){
-        console.log(payment);
+      user.$update(function(user){
+        console.log(user);
+        $scope.global.user = user;
         $location.path('/');
       });
     };
@@ -50,6 +51,7 @@ angular.module('issuemarket.controllers.users', []).controller('UsersController'
         User.get({
           userId: $stateParams.userId
         }, function(user){
+          console.log(user);
           $scope.user = user;
         });
         // i want to use the global.user._id

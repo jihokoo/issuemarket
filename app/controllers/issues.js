@@ -216,14 +216,10 @@ module.exports = {
   },
 
   showAll: function(req, res){
-    Campaign.find({_id: req.body.id}, function(err, campaigns){
-      var deferred = Q.defer();
-      campaigns.forEach(function(campaign){
-
-      })
-      campaign.populate("marketplaces").populate("payments").populate("merchants").exec(function(err, campaign){
-        res.jsonp(campaign);
-      })
+    console.log("hello")
+    Campaign.find({}).populate("marketplaces").populate("payments").populate("merchants").exec(function(err, campaigns){
+      console.log(campaigns)
+      res.jsonp(campaigns);
     })
   }
 

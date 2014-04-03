@@ -30,6 +30,10 @@ angular.module('issuemarket.controllers.issues', []).controller('CampaignsContro
       // emails
     };
 
+    $scope.toCampaignPage = function(campaign){
+      $location.path('/campaign/'+campaign._id);
+    }
+
     $scope.merchants = false;
     $scope.marketplaces = false;
     $scope.contributions = false;
@@ -144,6 +148,13 @@ angular.module('issuemarket.controllers.issues', []).controller('CampaignsContro
           console.log(campaign);
         })
       }
+    };
+
+    $scope.findAll = function(){
+      Campaign.query(function(campaigns){
+        console.log(campaigns)
+        $scope.campaigns = campaigns;
+      })
     }
   }]
 );
